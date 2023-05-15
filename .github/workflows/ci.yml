@@ -12,7 +12,7 @@ name: Molecule Test
 
 defaults:
   run:
-    working-directory: 'yara'
+    working-directory: 'bootstrap'
 
 jobs:
 
@@ -29,7 +29,7 @@ jobs:
       - name: Checkout the code base
         uses: actions/checkout@v2
         with:
-          path: 'yara'
+          path: 'bootstrap'
 
       - name: Set up Python 3
         uses: actions/setup-python@v2
