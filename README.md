@@ -1,4 +1,4 @@
-Role Name
+bootstrap
 =========
 
 Ansible role that bootstraps a new server with all the required packages and configurations
