@@ -1,0 +1,16 @@
+---
+remote_home: "{{ ansible_env.HOME }}"
+packages:
+  - curl
+  - fonts-powerline
+  - git
+  - htop
+  - openssh-server
+  - python3-pip
+  - tmux
+  - tmuxinator
+  - tzdata
+  - unzip
+  - vim
+  - wget
+  - xsel 

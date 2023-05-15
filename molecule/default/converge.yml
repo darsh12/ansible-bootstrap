@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include darsh12.bootstrap"
+      include_role:
+        name: "darsh12.bootstrap"

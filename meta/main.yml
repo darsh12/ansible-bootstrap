@@ -1,0 +1,16 @@
+galaxy_info:
+  author: darsh12
+  namespace: darsh12
+  description: Ansible role that bootstraps a new server
+
+  license: BSD
+
+  min_ansible_version: 2.10
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+
+#dependencies: 
+#  - gantsign.oh-my-zsh
