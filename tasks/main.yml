@@ -204,8 +204,9 @@
 
 - name: include adduser task
   include_tasks: adduser.yml
-  apply:
-    tags:
-      - new-user
+  args:
+    apply:
+      tags:
+        - new-user
   tags:
     - always
