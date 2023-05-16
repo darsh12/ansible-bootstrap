@@ -183,9 +183,9 @@
 - name: change timezone
   ansible.builtin.template:
     src: timezone.j2
-    dest: /etc/timezone 
-    owner: root 
-    group: root 
+    dest: /etc/timezone
+    owner: root
+    group: root
     mode: 0644
   become: yes
   notify: reconfigure tzdata
@@ -201,3 +201,11 @@
   become: yes
   tags: ssh
   notify: restart ssh
+
+- name: include adduser task
+  include_tasks: adduser.yml
+  apply:
+    tags:
+      - new-user
+  tags:
+    - always

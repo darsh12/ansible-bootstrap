@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include bootstrap and check if user is added"
+      include_role:
+        name: "bootstrap"
+      vars:
+        new_username: user
+        # user_password: user
+        ssh_public_keys: ['ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJycSI5SGoLFgmUl/E1q4+VdaU+qSMIteC/4aCQ1QAlR']

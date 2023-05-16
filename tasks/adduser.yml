@@ -1,0 +1,40 @@
+---
+- name: prompt user password
+  pause:
+    prompt: "please input new {{ new_username }} password"
+  register: input_user_password
+  when: new_username is defined and user_password is not defined
+
+- name: set user password
+  set_fact:
+    user_password: "{{ input_user_password.user_input }}"
+  when: input_user_password is not skipped
+
+- name: Add the user to the system
+  user:
+    name: "{{ new_username }}"
+    shell: /bin/bash
+    groups: sudo
+    append: yes
+    create_home: yes
+    password: "{{ user_password | password_hash('sha512') }}"
+  when: new_username is defined
+  become: yes
+
+- name: Ensure .ssh directory exists for the user
+  file:
+    path: "/home/{{ new_username }}/.ssh"
+    state: directory
+    owner: "{{ new_username }}"
+    group: "{{ new_username }}"
+    mode: 0700
+  when: new_username is defined
+  become: yes
+
+- name: Configure SSH authorized keys for the user
+  authorized_key:
+    user: "{{ new_username }}"
+    key: "{{ item }}"
+  with_items: "{{ ssh_public_keys }}"
+  when: ssh_public_keys is defined and new_username is defined
+  become: yes

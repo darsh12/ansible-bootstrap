@@ -1,7 +1,7 @@
 bootstrap
 =========
 
-Ansible role that bootstraps a new server with all the required packages and configurations
+Ansible role that bootstraps a new server with all the required packages and configurations. Additionally, you can optionally add a new user
 
 Tags
 ------------
@@ -17,6 +17,9 @@ users:
   - username: root
 timezone: US/Pacific
 ssh_port: 22
+new_username: user (optional)
+user_password: password (optional, prompted if left blank and when new_username is defined)
+ssh_public_keys: ['ssh-key'] (optional)
 ```
 
 Dependencies
@@ -40,6 +43,9 @@ Example Playbook
       - username: user
     timezone: US/Pacific
     ssh_port: 22
+    new_username: user
+    user_password: password
+    ssh_public_keys: ['ssh-key']
 
 ```
 
