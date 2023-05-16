@@ -10,6 +10,13 @@
     user_password: "{{ input_user_password.user_input }}"
   when: input_user_password is not skipped
 
+- name: Ensure sudo is installed
+  apt:
+    name: sudo
+    update_cache: yes
+    state: present
+  become: yes
+
 - name: Add the user to the system
   user:
     name: "{{ new_username }}"
