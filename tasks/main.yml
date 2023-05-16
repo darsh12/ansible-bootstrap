@@ -17,6 +17,15 @@
   become: yes
   tags: update
 
+- name: include adduser task
+  include_tasks: adduser.yml
+  args:
+    apply:
+      tags:
+        - new-user
+  tags:
+    - always
+
 - name: install relatively used packages
   apt:
     name: "{{ packages }}"
@@ -201,12 +210,3 @@
   become: yes
   tags: ssh
   notify: restart ssh
-
-- name: include adduser task
-  include_tasks: adduser.yml
-  args:
-    apply:
-      tags:
-        - new-user
-  tags:
-    - always
