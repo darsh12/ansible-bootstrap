@@ -5,3 +5,6 @@
     - name: "Include darsh12.bootstrap"
       include_role:
         name: "darsh12.bootstrap"
+      vars:
+        users:
+          - username: root

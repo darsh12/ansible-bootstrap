@@ -144,9 +144,10 @@
 - name: install oh-my-zsh
   include_role:
     name: gantsign.oh-my-zsh
-  loop_control:
-    loop_var:
-      - "{{ users }}"
+  vars:
+    loop_control:
+      loop_var:
+        - "{{ users }}"
 
 - name: clone dotfiles
   git:

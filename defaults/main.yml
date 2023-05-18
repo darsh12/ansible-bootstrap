@@ -1,5 +1,3 @@
 ---
-users:
-  - username: root
 timezone: US/Pacific
 ssh_port: 22
