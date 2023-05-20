@@ -1,6 +1,7 @@
 ---
 remote_home: "{{ ansible_env.HOME }}"
 packages:
+  - acl
   - curl
   - fonts-powerline
   - git
