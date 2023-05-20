@@ -20,6 +20,7 @@ ssh_port: 22
 new_username: user (optional)
 user_password: password (optional, prompted if left blank and when new_username is defined)
 ssh_public_keys: ['ssh-key'] (optional)
+user_uid: <DEFAULT BLANK>
 ```
 
 Dependencies

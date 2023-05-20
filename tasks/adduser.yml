@@ -24,6 +24,7 @@
     groups: sudo
     append: yes
     create_home: yes
+    uid: "{{ user_uid | default(omit) }}"
     password: "{{ user_password | password_hash('sha512') }}"
   when: new_username is defined
   become: yes
