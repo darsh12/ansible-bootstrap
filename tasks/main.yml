@@ -61,18 +61,18 @@
   become: yes
   tags: update
 
-- name: get latest ripgrep release
-  uri:
-    url: https://api.github.com/repos/BurntSushi/ripgrep/releases/latest
-  register: ripgrep_latest
-  tags: update
-
-- name: "installing ripgrep {{ ripgrep_latest.json.tag_name }}"
-  apt:
-    deb: "https://github.com/BurntSushi/ripgrep/releases/download/{{ ripgrep_latest.json.tag_name }}/ripgrep_{{ ripgrep_latest.json.tag_name }}_amd64.deb"
-    force: yes
-  become: yes
-  tags: update
+#- name: get latest ripgrep release
+#  uri:
+#    url: https://api.github.com/repos/BurntSushi/ripgrep/releases/latest
+#  register: ripgrep_latest
+#  tags: update
+#
+#- name: "installing ripgrep {{ ripgrep_latest.json.tag_name }}"
+#  apt:
+#    deb: "https://github.com/BurntSushi/ripgrep/releases/download/{{ ripgrep_latest.json.tag_name }}/ripgrep_{{ ripgrep_latest.json.tag_name }}_amd64.deb"
+#    force: yes
+#  become: yes
+#  tags: update
 
 - name: get latest bat release
   uri:
