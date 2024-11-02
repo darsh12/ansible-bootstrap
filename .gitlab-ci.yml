@@ -25,7 +25,7 @@ variables:
 molecule_test_ubuntu:
   <<: *molecule_test_defaults
   before_script:
-    - apt install python3-passlib
+    - apk add py3-passlib
   variables:
     MOLECULE_DISTRO: ubuntu2204
   only:
