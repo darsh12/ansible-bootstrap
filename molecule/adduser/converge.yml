@@ -4,7 +4,7 @@
   tasks:
     - name: "Include bootstrap and check if user is added"
       include_role:
-        name: "bootstrap"
+        name: "darsh12.bootstrap"
       vars:
         users:
           - username: root

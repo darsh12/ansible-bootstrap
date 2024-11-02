@@ -18,7 +18,7 @@
   become: yes
 
 - name: Add the user to the system
-  user:
+  ansible.builtin.user:
     name: "{{ new_username }}"
     shell: /bin/bash
     groups: sudo

@@ -61,18 +61,18 @@
   become: yes
   tags: update
 
-#- name: get latest ripgrep release
-#  uri:
-#    url: https://api.github.com/repos/BurntSushi/ripgrep/releases/latest
-#  register: ripgrep_latest
-#  tags: update
-#
-#- name: "installing ripgrep {{ ripgrep_latest.json.tag_name }}"
-#  apt:
-#    deb: "https://github.com/BurntSushi/ripgrep/releases/download/{{ ripgrep_latest.json.tag_name }}/ripgrep_{{ ripgrep_latest.json.tag_name }}_amd64.deb"
-#    force: yes
-#  become: yes
-#  tags: update
+- name: get latest ripgrep release
+  uri:
+    url: https://api.github.com/repos/BurntSushi/ripgrep/releases/latest
+  register: ripgrep_latest
+  tags: update
+
+- name: "installing ripgrep {{ ripgrep_latest.json.tag_name }}"
+  apt:
+    deb: "https://github.com/BurntSushi/ripgrep/releases/download/{{ ripgrep_latest.json.tag_name }}/ripgrep_{{ ripgrep_latest.json.tag_name }}-1_amd64.deb"
+    force: yes
+  become: yes
+  tags: update
 
 - name: get latest bat release
   uri:
@@ -95,7 +95,7 @@
 
 - name: "installing fzf {{ bat_latest.json.tag_name }}"
   ansible.builtin.unarchive:
-    src: "https://github.com/junegunn/fzf/releases/download/{{ fzf_latest.json.tag_name }}/fzf-{{ fzf_latest.json.tag_name }}-linux_amd64.tar.gz"
+    src: "https://github.com/junegunn/fzf/releases/download/{{ fzf_latest.json.tag_name }}/fzf-{{ fzf_latest.json.tag_name | regex_replace('v')   }}-linux_amd64.tar.gz"
     dest: /usr/local/bin
     remote_src: yes
     mode: 0755
