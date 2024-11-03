@@ -17,7 +17,7 @@ variables:
   PY_COLORS: '1'
   ANSIBLE_FORCE_COLOR: '1'
 
-molecule_test_ubuntu:
+molecule_test:
   stage: test
   before_script:
     - apk add py3-passlib
