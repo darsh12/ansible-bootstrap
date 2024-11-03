@@ -17,17 +17,17 @@ variables:
   PY_COLORS: '1'
   ANSIBLE_FORCE_COLOR: '1'
 
-.molecule_test_defaults: &molecule_test_defaults
-  stage: test
-  script:
-    - molecule test --all --parallel
-
 molecule_test_ubuntu:
-  <<: *molecule_test_defaults
+  stage: test
   before_script:
     - apk add py3-passlib
+  parallel:
+    matrix:
+      - MOLECULE_DISTRO: ["ubuntu2204","debian10"]
+  script:
+    - molecule test --all --parallel
   variables:
-    MOLECULE_DISTRO: ubuntu2204
+    MOLECULE_DISTRO: $MOLECULE_DISTRO
   only:
     changes:
       - main
