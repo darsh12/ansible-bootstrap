@@ -37,7 +37,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip3 install "molecule-plugins[docker]" yamllint ansible-lint ansible docker
+        run: pip3 install "molecule-plugins[docker]" yamllint ansible-lint ansible docker passlib
 
       - name: Run Molecule Test
         run: molecule test --all --parallel
