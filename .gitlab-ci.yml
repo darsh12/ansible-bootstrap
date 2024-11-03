@@ -23,7 +23,7 @@ molecule_test:
     - apk add py3-passlib
   parallel:
     matrix:
-      - MOLECULE_DISTRO: ["ubuntu2204","debian10"]
+      - MOLECULE_DISTRO: ["ubuntu2204","debian12"]
   script:
     - molecule test --all --parallel
   variables:
