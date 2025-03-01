@@ -132,14 +132,14 @@
     mode: '0755'
   become: yes
 
-- name: install powerline-status
-  pip:
-    executable: pip3
-    name: powerline-status
-    extra_args: --upgrade
-    state: present
-  become: yes
-  tags: update
+#- name: install powerline-status
+#  pip:
+#    executable: pip3
+#    name: powerline-status
+#    extra_args: --upgrade
+#    state: present
+#  become: yes
+#  tags: update
 
 - name: install oh-my-zsh
   include_role:
