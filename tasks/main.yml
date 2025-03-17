@@ -39,14 +39,18 @@
   failed_when: fc_output.rc != 0
   changed_when: '"fc-cache: succeeded" not in fc_output.stdout'
 
-- name: install antibody
-  shell: set -o pipefail && curl -sfL git.io/antibody | sh -s - -b /usr/local/bin
-  args:
-    executable: /bin/bash
-  register: antibody_output
-  changed_when: '"getantibody/antibody info installed /usr/local/bin/antibody" in antibody_output.stdout'
+- name: install antidote
+  git:
+    repo: https://github.com/mattmc3/antidote.git
+    dest: "~{{ item.username }}/.antidote"
+    version: main
+    force: yes
   become: yes
-  tags: update
+  become_user: "{{ item.username }}"
+  with_items: "{{ users }}"
+  tags:
+    - dotfiles
+    - update
 
 ## https://stackoverflow.com/questions/50966777/ansible-download-latest-release-binary-from-github-repo
 - name: get latest fd release
@@ -151,6 +155,7 @@
   with_items: "{{ users }}"
   tags:
     - dotfiles
+    - update
 
 - name: execute dotfile installation
   command: "./install-profile linux"
@@ -162,6 +167,7 @@
   changed_when: false
   tags:
     - dotfiles
+    - update
 
 - name: clone tpm
   git:
