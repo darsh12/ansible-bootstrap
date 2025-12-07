@@ -44,6 +44,5 @@
     user: "{{ new_username }}"
     key: "{{ item }}"
   with_items: "{{ ssh_public_keys }}"
-  when: ssh_public_keys is defined
-  tags: ssh_keys
+  when: ssh_public_keys is defined and new_username is defined
   become: yes
